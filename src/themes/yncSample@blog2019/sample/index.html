@@ -1,0 +1,45 @@
+@extends("/_layouts/two-column.html")
+
+@section("main")
+<div class="main-wrap">
+  @include("/include/ync_sample.html")
+
+  <!-- 確認用テンプレート -->
+  @include("/include/check-seo.html")
+  
+</div>
+@endsection
+
+@section("sub")
+
+<!-- プロフィール -->
+@include("/include/user-profile.html")
+
+<!-- カレンダー -->
+@include("/include/calendar-month.html")
+
+<!-- エントリー一覧 -->
+@include("/include/entry-list-thumbnail.html")
+
+<!-- エントリー一覧（画像なし） -->
+<!-- @include("/include/entry-list.html") -->
+
+<!-- エントリー一覧（画像大きめ） -->
+<!-- @include("/include/thumbnail.html") -->
+
+<!-- カテゴリー一覧 -->
+@include("/include/category-list.html")
+
+<!-- アーカイブ -->
+@include("/include/archive-list.html")
+
+<!-- タグクラウド -->
+@include("/include/tag-cloud.html")
+
+<!-- 検索フォーム -->
+@include("/include/search.html")
+
+<!-- バナー一覧 -->
+@include("/include/banner.html")
+
+@endsection

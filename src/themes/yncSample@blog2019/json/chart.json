@@ -1,0 +1,13 @@
+{<!-- BEGIN_MODULE Entry_Summary id="ync_json" --><!-- BEGIN entry:loop -->
+  "<!-- BEGIN_IF [{ync_type}/eq/front] -->front<!-- ELSE -->{eid}<!-- END_IF -->": {
+    "id": {eid},
+    "title": {title}[jencode],
+    "body": <!-- BEGIN_IF [{ync_body}/nem] -->"{ync_body}[raw|rawurlencode]"<!-- ELSE -->null<!-- END_IF --><!-- BEGIN_IF [{ync_type}/neq/result] -->,
+    "answers": [<!-- BEGIN ync_answers:loop --><!-- BEGIN ync_answers:glue -->,<!-- END ync_answers:glue -->
+      {
+        "label": <!-- BEGIN_IF [{ync_label}/nem] -->{ync_label}[jencode]<!-- ELSE -->null<!-- END_IF -->,
+        "link": <!-- BEGIN_IF [{ync_eid}/nem] -->{ync_eid}<!-- ELSE -->null<!-- END_IF -->
+      }<!-- END ync_answers:loop -->
+    ]<!-- END_IF -->
+  }<!-- BEGIN glue -->,<!-- END glue --><!-- END entry:loop --><!-- END_MODULE Entry_Summary -->
+}

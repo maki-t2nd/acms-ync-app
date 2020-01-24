@@ -1,0 +1,85 @@
+@verbatim
+<div class="yesno-content" v-cloak>
+  <transition>
+    <div class="chart" :key="front.id">
+      <h2 class="chart_title">{{ front.title }}</h2>
+      <div v-if="front.body" v-html="body"></div>
+      <ul class="chart_answers" v-if="front.answers">
+        <li v-for="answer in front.answers">
+          <a href="#" class="acms-btn acms-btn-large acms-btn-primary" @click.prevent="doAnswer(answer.link)">{{ answer.label }}</a>
+        </li>
+      </ul>
+    </div>
+  </transition>
+</div>
+@endverbatim
+
+<style>
+  [v-cloak] {
+    display: none;
+  }
+  .v-enter-active, .v-enter-to {
+    transition: opacity .5s;
+  }
+  
+  .v-enter, .v-leave-to, .v-leave {
+    opacity: 0;
+  }
+
+  .chart {
+    border: 4px solid #333;
+    border-radius: 5px;
+    padding: 1.5em;
+  }
+
+  .chart_answers {
+    list-style: none;
+    margin: 0 -1em;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .chart_answers li {
+    flex-grow: 1;
+    padding: 0 1em;
+  }
+
+  .chart_answers a {
+    width: 100%;
+  }
+  
+</style>
+
+<script src="/js/vue.js"></script>
+<script>
+$(function(){
+  var vm = new Vue({
+    'el': '.yesno-content',
+    data: {
+      contents: {},
+      front: {}
+    },
+    mounted: function(){
+      var _this = this;
+      $.getJSON('%{CATEGORY_URL}json/chart.json').done(function(json){
+        _this.setFront(json);
+      });
+    },
+    computed: {
+      body: function() {
+        return decodeURIComponent(this.front.body);
+      }
+    },
+    methods: {
+      setFront: function(json){
+        this.contents = json;
+        this.front = json.front;
+      },
+      doAnswer: function(id) {
+        this.front = this.contents[id];
+      }
+    }
+  });
+});
+</script>
