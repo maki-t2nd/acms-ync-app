@@ -168,6 +168,7 @@ class ServiceProvider extends ACMS_App
 
             $config = new Field();
             $config->set('entry_summary_limit', 999);
+            $config->set('entry_summary_entry_field', 'on');
             Config::saveConfig($config, BID, null, $mid);
         }
 
