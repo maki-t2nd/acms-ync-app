@@ -133,6 +133,7 @@ class ServiceProvider extends ACMS_App
             $SQL->addInsert('module_name', 'Entry_Summary');
             $SQL->addInsert('module_identifier', 'ync_entry_options');
             $SQL->addInsert('module_label', 'Yes/Noチャート設問用');
+            $SQL->addInsert('module_scope', 'global');
             $SQL->addInsert('module_description', '');
             $SQL->addInsert('module_custom_field', 0);
             $SQL->addInsert('module_layout_use', 0);
@@ -159,6 +160,7 @@ class ServiceProvider extends ACMS_App
             $SQL->addInsert('module_name', 'Entry_Summary');
             $SQL->addInsert('module_identifier', 'ync_json');
             $SQL->addInsert('module_label', 'Yes/Noチャート出力JSON用');
+            $SQL->addInsert('module_scope', 'global');
             $SQL->addInsert('module_description', '');
             $SQL->addInsert('module_cid_scope', 'global');
             $SQL->addInsert('module_custom_field', 0);
